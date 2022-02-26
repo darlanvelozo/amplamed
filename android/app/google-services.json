@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "367232782760",
+    "project_id": "amplamed-d1e8e",
+    "storage_bucket": "amplamed-d1e8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367232782760:android:106a903f229b66f5944d9d",
+        "android_client_info": {
+          "package_name": "com.example.amplamed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367232782760-fl8khv3tr8u07r8j7tou9ogr5f7itt1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnbpFOiqLpA430Ux0AHhAsvWvn30b8tIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367232782760-fl8khv3tr8u07r8j7tou9ogr5f7itt1v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
