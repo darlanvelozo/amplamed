@@ -5,10 +5,9 @@ class Aluguel {
   final String dataFim;
   final String dataInicio;
   final int valor;
-  final int id;
 
   Aluguel(
-      {required this.id,
+      {
       required this.nome,
       required this.produto,
       required this.telefone,
@@ -17,7 +16,6 @@ class Aluguel {
       required this.valor});
 
   Map<String, dynamic> toMap() => {
-        "id": id,
         "nome": nome,
         "produto": produto,
         'telefone': telefone,
@@ -26,7 +24,6 @@ class Aluguel {
         'valor': valor
       };
   factory Aluguel.fromMap(Map<String, dynamic> map) => Aluguel(
-      id: map['id'],
       nome: map['nome'],
       produto: map['produto'],
       telefone: map['telefone'],

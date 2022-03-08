@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddPage extends StatefulWidget {
-  AddPage({Key? key, required this.id}) : super(key: key);
-  int id;
+  const AddPage({Key? key}) : super(key: key);
+
   @override
   _AddPageState createState() => _AddPageState();
 }
@@ -137,7 +137,7 @@ class _AddPageState extends State<AddPage> {
                       hintText: "28/07/2022",
                       border: OutlineInputBorder(),
                     ),
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.datetime,
                   ),
                 ),
               ],
@@ -159,7 +159,6 @@ class _AddPageState extends State<AddPage> {
         dataInicioController.text.isNotEmpty &&
         dataFinalController.text.isNotEmpty) {
       Aluguel aluguel = Aluguel(
-          id: widget.id,
           nome: nomeController.text,
           produto: produto,
           telefone: numberController.text,
@@ -169,7 +168,7 @@ class _AddPageState extends State<AddPage> {
 
       FirebaseFirestore.instance
           .collection('alugueis')
-          .doc(aluguel.id.toString())
+          .doc(aluguel.nome)
           .set(aluguel.toMap());
 
       nomeController.clear();
