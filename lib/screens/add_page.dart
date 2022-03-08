@@ -14,6 +14,8 @@ class _AddPageState extends State<AddPage> {
   final TextEditingController dataInicioController = TextEditingController();
   final TextEditingController dataFinalController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
+  var datainicio;
+  var datafinal;
   String produto = "Bota";
   int diaria = 6;
   @override
@@ -111,17 +113,23 @@ class _AddPageState extends State<AddPage> {
                 top: altura * 0.05,
                 bottom: altura * 0.02),
             child: Row(
-              children: [
+              children: <Widget>[
                 Expanded(
                   flex: 2,
-                  child: TextField(
-                    controller: dataInicioController,
-                    decoration: const InputDecoration(
-                      labelText: "Data Inicial",
-                      hintText: "25/02/2022",
-                      border: OutlineInputBorder(),
-                    ),
-                    keyboardType: TextInputType.datetime,
+                  child: TextButton(
+                    onPressed: () {
+                      Future<DateTime?> pickerDate1 = showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2021),
+                        lastDate: DateTime(2222),
+                      ).then((date) {
+                        setState(() {
+                          datainicio = date;
+                        });
+                      });
+                    },
+                    child: Text(datainicio.toString().substring(0, 10)),
                   ),
                 ),
                 const Expanded(
@@ -130,14 +138,20 @@ class _AddPageState extends State<AddPage> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: TextField(
-                    controller: dataFinalController,
-                    decoration: const InputDecoration(
-                      labelText: "Data Final",
-                      hintText: "28/07/2022",
-                      border: OutlineInputBorder(),
-                    ),
-                    keyboardType: TextInputType.datetime,
+                  child: TextButton(
+                    onPressed: () {
+                      Future<DateTime?> pickerDate2 = showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2021),
+                        lastDate: DateTime(2222),
+                      ).then((date) {
+                        setState(() {
+                          datafinal = date;
+                        });
+                      });
+                    },
+                    child: Text(datafinal.toString().substring(0, 10)),
                   ),
                 ),
               ],
@@ -156,14 +170,14 @@ class _AddPageState extends State<AddPage> {
   void certo() {
     if (nomeController.text.isNotEmpty &&
         numberController.text.isNotEmpty &&
-        dataInicioController.text.isNotEmpty &&
-        dataFinalController.text.isNotEmpty) {
+        datainicio.toString().isNotEmpty &&
+        datafinal.toString().isNotEmpty) {
       Aluguel aluguel = Aluguel(
           nome: nomeController.text,
           produto: produto,
           telefone: numberController.text,
-          dataFim: dataFinalController.text,
-          dataInicio: dataInicioController.text,
+          dataFim: datafinal.toString(),
+          dataInicio: datainicio.toString(),
           valor: diaria);
 
       FirebaseFirestore.instance

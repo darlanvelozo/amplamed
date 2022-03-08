@@ -7,8 +7,7 @@ class Aluguel {
   final int valor;
 
   Aluguel(
-      {
-      required this.nome,
+      {required this.nome,
       required this.produto,
       required this.telefone,
       required this.dataFim,
